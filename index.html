@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>StreamLine Global — Big 4 Expertise. Startup Agility. One-Third the Cost.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Clean, white UI */
+    --bg: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #5b5b5b;
+    --soft: #f6f7f9;
+    --line: #e9ecf1;
+
+    /* Single accent color for emphasis and your pricing highlight */
+    --accent: #e91e63;
+
+    /* Secondary cues used lightly */
+    --success: #16a34a;
+    --warning: #f59e0b;
+
+    /* Glitter gradient base (uses the same accent hue) */
+    --glitter: linear-gradient(120deg,
+      rgba(233,30,99,0) 0%,
+      rgba(233,30,99,.18) 30%,
+      rgba(233,30,99,.38) 46%,
+      rgba(233,30,99,.18) 64%,
+      rgba(233,30,99,0) 100%);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+  }
+  .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;background:#fff;
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 0;
+  }
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{height:44px;width:auto}
+  .brand span{font-weight:800;letter-spacing:.5px}
+  .nav{display:flex;gap:22px;list-style:none}
+  .nav a{
+    color:var(--muted);text-decoration:none;font-weight:600;padding:8px 4px;border-bottom:2px solid transparent
+  }
+  .nav a:hover{color:var(--accent);border-color:var(--accent)}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:700;border-radius:10px;padding:12px 18px
+  }
+  .btn-accent{background:var(--accent);color:#fff}
+  .btn-accent:hover{opacity:.92}
+  .btn-outline{border:2px solid var(--ink);color:var(--ink)}
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* Hero */
+  .hero{padding:76px 0 56px;border-bottom:1px solid var(--line)}
+  .hero-title-wrap{display:inline-block;position:relative;overflow:hidden}
+  .hero h1{
+    font-size:clamp(28px,4.2vw,54px);line-height:1.15;font-weight:800;margin-bottom:16px;letter-spacing:.2px
+  }
+  .pink{color:var(--accent)}
+  .green-badge{
+    display:inline-block;background:#00e676;color:#063;
+    padding:4px 10px;border-radius:8px;font-weight:800
+  }
+  .hero .sub1{
+    color:var(--warning);font-weight:700;margin:6px 0 10px;font-size:clamp(16px,2vw,20px)
+  }
+  .hero .sub2{color:#3a3a3a;max-width:880px}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+
+  /* Glitter reveal animation */
+  .glitter-title,
+  .glitter-subline{
+    opacity:0; transform: translateY(10px);
+    animation: riseIn .6s ease-out forwards;
+  }
+  .glitter-subline{ animation-delay: .15s }
+
+  .glitter-title{
+    position:relative; display:inline-block;
+  }
+  .glitter-title::after{
+    content:"";
+    position:absolute; inset:0;
+    background: var(--glitter);
+    transform: translateX(-120%);
+    animation: glitterSweep 1.2s ease-out .2s forwards;
+    mix-blend-mode: screen; pointer-events:none;
+  }
+
+  /* Optional sparkles for subtle effect */
+  .sparkle{
+    position:absolute; width:6px; height:6px; border-radius:50%;
+    background: rgba(233,30,99,.85); filter: blur(.3px);
+    opacity:0; transform: scale(.6);
+    animation: popSparkle .8s ease-out forwards;
+  }
+  .sparkle.s1{ left:8%; top:68%; animation-delay:.25s }
+  .sparkle.s2{ left:54%; top:30%; animation-delay:.35s }
+  .sparkle.s3{ left:82%; top:72%; animation-delay:.45s }
+
+  @keyframes glitterSweep{
+    0%{ transform: translateX(-120%) }
+    100%{ transform: translateX(120%) }
+  }
+  @keyframes riseIn{
+    to{ opacity:1; transform: translateY(0) }
+  }
+  @keyframes popSparkle{
+    0%{ opacity:0; transform: translateY(6px) scale(.6) }
+    40%{ opacity:1; transform: translateY(0) scale(1) }
+    100%{ opacity:0; transform: translateY(-6px) scale(.9) }
+  }
+
+  /* Prefers reduced motion support */
+  @media (prefers-reduced-motion: reduce){
+    .glitter-title::after,
+    .glitter-title,
+    .glitter-subline,
+    .sparkle{ animation: none !important; opacity:1; transform:none }
+  }
+
+  /* Sections */
+  .section{padding:70px 0}
+  .section .head{text-align:center;margin-bottom:28px}
+  .section h2{font-size:clamp(24px,3vw,34px);font-weight:800;margin-bottom:8px}
+  .section p.lead{color:var(--muted)}
+
+  /* Cards/grids */
+  .grid{display:grid;gap:20px}
+  .g-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .g-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g-6{grid-template-columns:repeat(6,minmax(0,1fr))}
+  @media (max-width:1024px){.g-3,.g-2{grid-template-columns:1fr 1fr}}
+  @media (max-width:640px){.g-3,.g-2,.g-6{grid-template-columns:1fr}}
+  .card{border:1px solid var(--line);border-radius:14px;background:#fff;padding:22px}
+  .card:hover{box-shadow:0 10px 30px rgba(0,0,0,.06)}
+  .icon{
+    height:46px;width:46px;border-radius:10px;background:var(--soft);
+    display:flex;align-items:center;justify-content:center;margin-bottom:10px;font-size:22px
+  }
+  .card h3{font-size:18px;margin-bottom:6px}
+  .muted{color:var(--muted)}
+
+  /* Pricing */
+  .pricing{background:#fff;border-top:1px solid var(--line)}
+  .pricing .note{color:var(--muted)}
+  .price-row{display:grid;gap:22px;margin-top:22px}
+  .price-row.g-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  @media (max-width:900px){.price-row.g-3{grid-template-columns:1fr}}
+  .price-card{
+    border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff;text-align:center
+  }
+  .price{font-size:34px;font-weight:800;margin:6px 0}
+  .tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--muted);font-weight:700;font-size:12px}
+
+  /* Your plan LAST and highlighted with ONE color (var(--accent)) */
+  .price-card.final{
+    border-color:var(--accent);background:#fff;box-shadow:0 14px 40px rgba(233,30,99,.15)
+  }
+  .price-card.final .tag{border-color:var(--accent);color:var(--accent)}
+  .price-card.final .price{color:var(--accent)}
+  .price-card.final .btn-accent{width:100%}
+
+  /* Footer */
+  footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted)}
+  .foot-grid{display:grid;gap:20px;grid-template-columns:2fr 1fr 1fr}
+  @media (max-width:900px){.foot-grid{grid-template-columns:1fr}}
+  ul.clean{list-style:none}
+  ul.clean li{padding:4px 0}
+
+  /* helpers */
+  .sp-8{height:8px}.sp-16{height:16px}.sp-24{height:24px}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <div class="brand">
+      <!-- Replace src with your logo path if needed -->
+      <img src="2.jpg" alt="StreamLine Global logo"/>
+      <span>STREAMLINE GLOBAL</span>
+    </div>
+    <ul class="nav">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#case-studies">Case Studies</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn btn-accent" href="#contact">Get Started</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero with glitter reveal -->
+  <section class="hero container">
+    <div class="hero-title-wrap">
+      <h1 class="glitter-title">
+        When Audits Fail, <span class="pink">Leaders Pay the Price.</span><br/>
+        <span class="green-badge glitter-subline">We Prevent That.</span>
+      </h1>
+      <!-- subtle sparkles -->
+      <span class="sparkle s1"></span>
+      <span class="sparkle s2"></span>
+      <span class="sparkle s3"></span>
+    </div>
+
+    <p class="sub1">Big 4 Expertise. Startup Agility. One-Third the Cost.</p>
+    <p class="sub2">Specialized staffing & delivery for IT Audit, GRC, SAP, ServiceNow, Data Analytics & DevOps.</p>
+    <div class="cta">
+      <a class="btn btn-accent" href="#contact">Start Risk‑Free Pilot</a>
+      <a class="btn btn-outline" href="#solutions">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Problems -->
+  <section class="section">
+    <div class="container">
+      <div class="head">
+        <h2>The Critical Challenge</h2>
+        <p class="lead">IT leaders face compound audit risks with shrinking budgets and fixed deadlines.</p>
+      </div>
+      <div class="grid g-3">
+        <div class="card"><div class="icon">💰</div><h3>Budget squeeze</h3><p class="muted">Budgets shrink while compliance dates don’t.</p></div>
+        <div class="card"><div class="icon">⚠️</div><h3>Audit failures</h3><p class="muted">Under‑skilled resources risk regulatory standing.</p></div>
+        <div class="card"><div class="icon">⏱️</div><h3>Slow onboarding</h3><p class="muted">6–38 week delays when compliance can’t wait.</p></div>
+        <div class="card"><div class="icon">📉</div><h3>Quality gaps</h3><p class="muted">Standards don’t match actual audit needs.</p></div>
+        <div class="card"><div class="icon">🔒</div><h3>Vendor lock‑in</h3><p class="muted">Rigid contracts drain budgets.</p></div>
+        <div class="card"><div class="icon">🎯</div><h3>Leadership risk</h3><p class="muted">Penalties, board scrutiny, reputation damage.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions -->
+  <section id="solutions" class="section" style="background:var(--soft)">
+    <div class="container">
+      <div class="head">
+        <h2>How We Bridge the Gap</h2>
+        <p class="lead">Eliminate the trade‑off between quality and cost.</p>
+      </div>
+      <div class="grid g-2">
+        <div class="card"><div class="icon" style="color:var(--success)">1</div><h3>Practitioner‑vetted talent</h3><p class="muted">Ex‑Big 4 auditors screen every resource.</p></div>
+        <div class="card"><div class="icon" style="color:var(--success)">2</div><h3>Rapid mobilization</h3><p class="muted">Deploy in 1–2 weeks, not months.</p></div>
+        <div class="card"><div class="icon" style="color:var(--success)">3</div><h3>Cost‑effective excellence</h3><p class="muted">Up to 70% savings with no quality dip.</p></div>
+        <div class="card"><div class="icon" style="color:var(--success)">4</div><h3>Flexible engagement</h3><p class="muted">Augment 1 expert or a full offshore pod.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="head">
+        <h2>Specialized Domains</h2>
+        <p class="lead">Coverage across mission‑critical enterprise technologies.</p>
+      </div>
+      <div class="grid g-3">
+        <div class="card"><h3 style="color:var(--accent)">IT Audit / SOX / ITGC</h3><p class="muted">SOX programs, ITGC design, audit readiness.</p></div>
+        <div class="card"><h3 style="color:var(--accent)">GRC Platforms</h3><p class="muted">ServiceNow, Archer, MetricStream implementation.</p></div>
+        <div class="card"><h3 style="color:var(--accent)">SAP Audit & Security</h3><p class="muted">SAP GRC, S/4HANA security, controls.</p></div>
+        <div class="card"><h3 style="color:var(--accent)">ServiceNow ITSM / SecOps</h3><p class="muted">Modern IT operations with security alignment.</p></div>
+        <div class="card"><h3 style="color:var(--accent)">Audit Analytics</h3><p class="muted">Power BI, Tableau, ACL automation.</p></div>
+        <div class="card"><h3 style="color:var(--accent)">DevOps & Cloud Security</h3><p class="muted">CI/CD and cloud governance compliance.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case studies -->
+  <section id="case-studies" class="section" style="background:var(--soft)">
+    <div class="container">
+      <div class="head">
+        <h2>Proof in Action</h2>
+        <p class="lead">Real outcomes under tight deadlines.</p>
+      </div>
+      <div class="grid g-3">
+        <div class="card">
+          <span class="tag">Global Pharma</span>
+          <div class="sp-8"></div>
+          <h3>Avoided FDA penalties in 12 days</h3>
+          <p class="muted">Deployed SAP audit experts to close critical gaps pre‑review.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Public FinTech</span>
+          <div class="sp-8"></div>
+          <h3>45% SOX overrun reduction</h3>
+          <p class="muted">Analytics augmentation and automated testing.</p>
+        </div>
+        <div class="card">
+          <span class="tag">F500 Manufacturing</span>
+          <div class="sp-8"></div>
+          <h3>Cleared ITGC backlog in 6 weeks</h3>
+          <p class="muted">Dedicated offshore audit pod and streamlined processes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing (Your plan last and highlighted with single accent color) -->
+  <section id="pricing" class="section pricing">
+    <div class="container">
+      <div class="head">
+        <h2>Pricing Comparison</h2>
+        <p class="note">Transparent rates with flexible engagement models.</p>
+      </div>
+
+      <div class="price-row g-3">
+        <div class="price-card">
+          <span class="tag">Big 4 Firms</span>
+          <div class="price">$120–$400/hr</div>
+          <p class="muted">Premium pricing, rigid contracts, vendor lock‑in.</p>
+        </div>
+
+        <div class="price-card">
+          <span class="tag">Mid‑Tier</span>
+          <div class="price">$80–$250/hr</div>
+          <p class="muted">More flexible, variable quality and margins.</p>
+        </div>
+
+        <!-- Your plan LAST and highlighted with ONE color -->
+        <div class="price-card final">
+          <span class="tag">StreamLine Global</span>
+          <div class="price">$30–$90/hr</div>
+          <p>Big 4 quality. Startup agility. Engagements tailored to fit budget and timeline.</p>
+          <div class="sp-16"></div>
+          <a href="#contact" class="btn btn-accent">Start Risk‑Free Pilot</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section" style="background:var(--soft)">
+    <div class="container">
+      <div class="head">
+        <h2>Ready to Solve Your Resource Challenge?</h2>
+        <p class="lead">Access audit‑ready experts within 1–2 weeks.</p>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn-accent" href="mailto:projects@streamlineglobal.in">Start Pilot Project</a>
+        <a class="btn btn-outline" href="mailto:projects@streamlineglobal.in">Contact Us</a>
+      </div>
+      <div class="sp-24"></div>
+      <p style="text-align:center;color:var(--muted)">
+        projects@streamlineglobal.in • 20130 Lakeview Center Plaza, Ashburn, VA 20147 • Backed by Sapphire Software Solutions (Certified MBE)
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container foot-grid">
+    <div>
+      <strong>Services</strong>
+      <ul class="clean">
+        <li>SOX & ITGC Programs</li>
+        <li>GRC Implementations</li>
+        <li>SAP Security & Controls</li>
+        <li>ServiceNow ITSM</li>
+        <li>Audit Analytics</li>
+        <li>DevOps Compliance</li>
+      </ul>
+    </div>
+    <div>
+      <strong>Company</strong>
+      <ul class="clean">
+        <li><a href="#case-studies" style="color:var(--muted);text-decoration:none">Case Studies</a></li>
+        <li><a href="#pricing" style="color:var(--muted);text-decoration:none">Pricing</a></li>
+        <li><a href="#contact" style="color:var(--muted);text-decoration:none">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container" style="margin-top:22px;color:var(--muted);text-align:center">
+    © 2025 StreamLine Global. All rights reserved.
+  </div>
+</footer>
+
+<!-- Optional: ensure animation starts after webfonts render -->
+<script>
+  (function(){
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function(){
+        document.documentElement.classList.add('fonts-ready');
+      });
+    }
+  })();
+</script>
+</body>
+</html>
